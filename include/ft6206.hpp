@@ -238,7 +238,7 @@ class ft6206 final {
     ft6206(ft6206&& rhs) {
         do_move(rhs);
     }
-    ft6206& operator=(ft6236&& rhs) {
+    ft6206& operator=(ft6206&& rhs) {
         do_move(rhs);
         return *this;
     }
