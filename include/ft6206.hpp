@@ -2,8 +2,8 @@
 // https://github.com/DustinWatts/FT6236
 // Original license below:
 /*
-This is a library for the FT6236 touchscreen controller by FocalTech.
-The FT6236 and FT6236u work the same way.
+This is a library for the FT6206 touchscreen controller by FocalTech.
+
 A lot of this library is originally written by Limor Fried/Ladyada.
 Because Adafruit invests time and resources providing this open source code,
 please support Adafruit and open-source hardware by purchasing
@@ -59,7 +59,7 @@ namespace esp_idf {
 #endif
 
 template <uint16_t Width, uint16_t Height, uint8_t Threshhold = 128, uint8_t Address = 0x38>
-class ft6236 final {
+class ft6206 final {
     constexpr static const uint8_t TOUCH_REG_XL = 0x04;
     constexpr static const uint8_t TOUCH_REG_XH = 0x03;
     constexpr static const uint8_t TOUCH_REG_YL = 0x06;
@@ -86,9 +86,9 @@ class ft6236 final {
     size_t m_touches;
     uint16_t m_touches_x[2], m_touches_y[2], m_touches_id[2];
 
-    ft6236(const ft6236& rhs) = delete;
-    ft6236& operator=(const ft6236& rhs) = delete;
-    void do_move(ft6236& rhs) {
+    ft6206(const ft6206& rhs) = delete;
+    ft6206& operator=(const ft6206& rhs) = delete;
+    void do_move(ft6206& rhs) {
         m_i2c = rhs.m_i2c;
         m_rotation = rhs.m_rotation;
         m_initialized = rhs.m_initialized;
@@ -235,14 +235,14 @@ class ft6236 final {
     constexpr static const uint16_t native_height = Height;
     constexpr static const uint8_t threshhold = Threshhold;
     constexpr static const uint8_t address = Address;
-    ft6236(ft6236&& rhs) {
+    ft6206(ft6206&& rhs) {
         do_move(rhs);
     }
-    ft6236& operator=(ft6236&& rhs) {
+    ft6206& operator=(ft6236&& rhs) {
         do_move(rhs);
         return *this;
     }
-    ft6236(
+    ft6206(
 #ifdef ARDUINO
         TwoWire& i2c = Wire
 #else
