@@ -1,6 +1,6 @@
 {
     "name": "htcw_ft6206",
-    "version": "0.1.1",
+    "version": "0.2.0",
     "description": "Provides support for the FT6206 capacitive touch panel",
     "keywords": ["touch", "capacitive", "touch-panel", "lcd"],
     "authors": {
